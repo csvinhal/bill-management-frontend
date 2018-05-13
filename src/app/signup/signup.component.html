@@ -1,5 +1,5 @@
 <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin"
-  id="m_login">
+     id="m_login">
   <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
     <div class="m-stack m-stack--hor m-stack--desktop">
       <div class="m-stack__item m-stack__item--fluid m-login__wrapper">
@@ -8,79 +8,81 @@
         </div>
         <div class="m-login__head">
           <h3 class="m-login__title">
-            Sign Up
+            {{'signup.title'|translate}}
           </h3>
           <div class="m-login__desc">
-            Enter your details to create your account:
+            {{'signup.create_account_detail'|translate}}
           </div>
         </div>
         <form (ngSubmit)="signup.valid && signup()"
-          [formGroup]="signupForm"
-          class="m-login__form m-form"
-          action="">
+              [formGroup]="signupForm"
+              class="m-login__form m-form"
+              action="">
           <ng-template #alertSignup></ng-template>
           <div class="form-group m-form__group"
-            [ngClass]="{'has-danger': isFieldInvalid('firstName')}">
+               [ngClass]="{'has-danger': isFieldInvalid('firstname')}">
             <input class="form-control m-input"
-              type="text"
-              placeholder="Firstname"
-              name="firstName"
-              formControlName="firstName">
-            <app-error-messages [control]="signupForm.get('firstName')"
-              [errors]="{'required': 'This field is required.'}">
+                   type="text"
+                   placeholder="{{'signup.firstname'|translate}}"
+                   name="firstname"
+                   formControlName="firstname">
+            <app-error-messages [control]="signupForm.get('firstname')"
+                                [errors]="{'required': 'general.required'}">
             </app-error-messages>
           </div>
           <div class="form-group m-form__group"
-            [ngClass]="{'has-danger': isFieldInvalid('lastName')}">
+               [ngClass]="{'has-danger': isFieldInvalid('lastname')}">
             <input class="form-control m-input"
-              type="text"
-              placeholder="Lastname"
-              name="lastName"
-              formControlName="lastName">
+                   type="text"
+                   placeholder="{{'signup.lastname'|translate}}"
+                   name="lastname"
+                   formControlName="lastname">
             <div id="lastname-error"
-              *ngIf="isFieldInvalid('lastName')"
-              class="form-control-feedback">This field is required.</div>
+                 *ngIf="isFieldInvalid('lastname')"
+                 class="form-control-feedback">{{'general.required'|translate}}</div>
           </div>
           <div class="form-group m-form__group"
-            [ngClass]="{'has-danger': isFieldInvalid('email')}">
+               [ngClass]="{'has-danger': isFieldInvalid('email')}">
             <input class=" form-control m-input"
-              type="text"
-              placeholder="Email"
-              name="email"
-              formControlName="email"
-              autocomplete="off">
+                   type="text"
+                   placeholder="{{'signup.email'|translate}}"
+                   name="email"
+                   formControlName="email"
+                   autocomplete="off">
             <div id="email-error"
-              *ngIf="isFieldInvalid('email')"
-              class="form-control-feedback">This field is required.</div>
+                 *ngIf="isFieldInvalid('email')"
+                 class="form-control-feedback">{{'general.required'|translate}}</div>
           </div>
           <div class="form-group m-form__group"
-            [ngClass]="{ 'has-danger': isFieldInvalid('password')}">
+               [ngClass]="{ 'has-danger': isFieldInvalid('password')}">
             <input class="form-control m-input"
-              type="password"
-              placeholder="Password"
-              name="password"
-              formControlName="password">
+                   type="password"
+                   placeholder="{{'signup.password'|translate}}"
+                   name="password"
+                   formControlName="password">
             <div id="password-error"
-              *ngIf="isFieldInvalid('password')"
-              class="form-control-feedback">This field is required.</div>
+                 *ngIf="isFieldInvalid('password')"
+                 class="form-control-feedback">{{'general.required'|translate}}</div>
           </div>
           <div class="form-group m-form__group"
-            [ngClass]="{'has-danger': isFieldInvalid('rpassword')}">
+               [ngClass]="{'has-danger': isFieldInvalid('rpassword')}">
             <input class=" form-control m-input m-login__form-input--last"
-              type="password"
-              placeholder="Confirm Password"
-              name="rpassword"
-              formControlName="rpassword">
+                   type="password"
+                   placeholder="{{'signup.confirm_password'|translate}}"
+                   name="rpassword"
+                   formControlName="rpassword">
             <div id="rpassword-error"
-              *ngIf="isFieldInvalid('rpassword')"
-              class="form-control-feedback">This field is required.</div>
+                 *ngIf="isFieldInvalid('rpassword')"
+                 class="form-control-feedback">{{'general.required'|translate}}</div>
           </div>
           <div class="row form-group m-form__group m-login__form-sub">
             <div class="col m--align-left">
               <label class="m-checkbox m-checkbox--focus">
-                <input type="checkbox" name="agreed" formControlName="agreed"> I Agree the
+                <input type="checkbox"
+                      name="agreed"
+                      formControlName="agreed"> {{'signup.agreed'|translate}}
                 <a href="#" class="m-link m-link--focus">
-                  terms and conditions
+                  {{'signup.terms_and_conditions'|translate}}
                 </a>
                 .
                 <span></span>
@@ -90,17 +92,17 @@
           </div>
           <div class="m-login__form-action">
             <button [disabled]="loading"
-              [ngClass]="{ 'm-loader m-loader--right m-loader--light': loading}"
-              id="m_login_signup_submit"
-              (click)="signup()"
-              class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-              Sign Up
+                    [ngClass]="{ 'm-loader m-loader--right m-loader--light': loading}"
+                    id="m_login_signup_submit"
+                    (click)="signup()"
+                    class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
+                {{'signup.btn_sign'|translate}}
             </button>
             <button [disabled]="loading"
-              id="m_login_signup_cancel"
-              class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom"
-              [routerLink]="[ '/signin']">
-              Cancel
+                    id="m_login_signup_cancel"
+                    class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom"
+                    [routerLink]="[ '/signin']">
+              {{'signup.btn_cancel'|translate}}
             </button>
           </div>
         </form>

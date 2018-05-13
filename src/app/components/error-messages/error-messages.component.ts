@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -14,7 +15,7 @@ export class ErrorMessagesComponent implements OnInit {
   @Input() errors: any;
   messages: string[];
 
-  constructor() { }
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,7 @@ export class ErrorMessagesComponent implements OnInit {
   get errorMessage() {
     this.messages = [];
     Object.keys(this.control.errors).forEach(error => {
-      this.messages.push(this.errors[error]);
+      this.messages.push(this.translateService.instant(this.errors[error]));
     });
 
     return this.messages;

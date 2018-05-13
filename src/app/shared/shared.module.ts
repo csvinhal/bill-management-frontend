@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorMessagesModule } from '../components/error-messages/error-messages.module';
+import { TranslateHubModule } from '../components/translate/translate-hub.module';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import { ErrorMessagesModule } from '../components/error-messages/error-messages
   ],
   exports: [
     ReactiveFormsModule,
-    ErrorMessagesModule
+    ErrorMessagesModule,
+    TranslateHubModule
   ],
   declarations: []
 })

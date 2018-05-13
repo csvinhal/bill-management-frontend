@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SigninModule } from './signin/signin.module';
@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { UrlInterceptor } from './interceptors/url.interceptor';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ToastrModule } from './components/toastr/toastr.module';
+import { Observable } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ToastrModule } from './components/toastr/toastr.module';
       provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor,
       multi: true
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

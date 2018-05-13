@@ -1,0 +1,28 @@
+{
+  "signup": {
+    "title": "Inscreva-se",
+    "create_account_detail": "Preencha os campos abaixo para criar sua conta:",
+    "firstname": "Nome",
+    "lastname": "Sobrenome",
+    "email": "Email",
+    "password": "Senha",
+    "confirm_password": "Confirme a senha",
+    "agreed": "Eu concordo com os",
+    "terms_and_conditions": "termos e condições",
+    "btn_sign": "Cadastrar",
+    "btn_cancel": "Cancelar"
+  },
+  "signin": {
+    "title": "Acessar",
+    "email": "Email",
+    "password": "Senha",
+    "remember_me": "Lembrar",
+    "forget_password": "Esqueceu a senha",
+    "login": "Acessar",
+    "signup": "Cadastre-se",
+    "has_account": "Ainda não tem conta"
+  },
+  "general": {
+    "required": "O campo é obrigatório."
+  }
+}
