@@ -1,0 +1,5 @@
+<div id="firstname-error"
+     *ngIf="hasError"
+     class="form-control-feedback">
+  <span *ngFor="let message of errorMessage">{{message}}</span>
+</div>
