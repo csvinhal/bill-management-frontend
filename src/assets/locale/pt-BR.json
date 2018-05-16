@@ -22,6 +22,9 @@
     "signup": "Cadastre-se",
     "has_account": "Ainda não tem conta"
   },
+  "dashboard": {
+    "dashboard": "teste"
+  },
   "general": {
     "required": "O campo é obrigatório."
   }

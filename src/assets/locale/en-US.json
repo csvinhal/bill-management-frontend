@@ -22,6 +22,9 @@
     "signup": "Sign Up",
     "has_account": "Don't have an account yet"
   },
+  "dashboard": {
+    "dashboard": "teste"
+  },
   "general": {
     "required": "This field is required."
   }
