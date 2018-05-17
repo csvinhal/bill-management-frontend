@@ -1,8 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
-
-
 
 @Component({
   selector: 'app-error-messages',
@@ -15,20 +12,18 @@ export class ErrorMessagesComponent implements OnInit {
   @Input() errors: any;
   messages: string[];
 
-  constructor(private translateService: TranslateService) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  get hasError() {
-    return !this.control.valid && this.control.touched;
-  }
-
   get errorMessage() {
     this.messages = [];
-    Object.keys(this.control.errors).forEach(error => {
-      this.messages.push(this.translateService.instant(this.errors[error]));
-    });
+    if (!this.control.valid && this.control.touched) {
+      Object.keys(this.control.errors).forEach(error => {
+        this.messages.push(this.errors[error]);
+      });
+    }
 
     return this.messages;
   }

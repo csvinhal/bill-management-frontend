@@ -9,9 +9,8 @@ import { SigninModule } from './signin/signin.module';
 import { SignupModule } from './signup/signup.module';
 import { SharedModule } from './shared/shared.module';
 import { UrlInterceptor } from './interceptors/url.interceptor';
-import { ToastrModule } from './components/toastr/toastr.module';
 import { AppRouting } from './app.routing';
-import { TranslateHubModule } from './components';
+import { CoreModule } from '@core';
 
 @NgModule({
   declarations: [
@@ -20,9 +19,8 @@ import { TranslateHubModule } from './components';
   imports: [
     BrowserModule,
     AppRouting,
-    TranslateHubModule,
     HttpClientModule,
-    ToastrModule,
+    CoreModule,
     SharedModule,
     SigninModule,
     SignupModule

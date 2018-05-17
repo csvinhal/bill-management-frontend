@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SigninService } from './signin.service';
 import { Router } from '@angular/router';
-import { ToastrService } from '../components/toastr/toastr.service';
+import { ToastrService } from '@core';
 
 @Component({
   selector: 'app-signin',
