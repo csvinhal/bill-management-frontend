@@ -1,22 +1,24 @@
-<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin"
-     id="m_login">
-  <div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
-    <div class="m-stack m-stack--hor m-stack--desktop">
-      <div class="m-stack__item m-stack__item--fluid m-login__wrapper">
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2"
+       id="m_login"
+       style="background-image: url(assets/img/bg/bg-3.jpg);">
+    <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
+      <div class="m-login__container">
         <div class="m-login__logo">
-          <img src="assets/icons/favicon-96x96.png">
-        </div>
-        <div class="m-login__head">
-          <h3 class="m-login__title">
-            {{'signin.title'|translate}}
-          </h3>
+          <a href="javascript:">
+            <img src="assets/icons/favicon-96x96.png">
+          </a>
         </div>
         <div class="m-login__signin">
+          <div class="m-login__head">
+            <h3 class="m-login__title">
+              {{'signin.title'|translate}}
+            </h3>
+          </div>
           <form (ngSubmit)="signin()"
                 [formGroup]="signinForm"
                 class="m-login__form m-form"
                 action="">
-            <ng-template #alertSignin></ng-template>
             <div class="form-group m-form__group"
                  [ngClass]="{'has-danger': isFieldInvalid('email')}">
               <input class="form-control m-input"
@@ -28,10 +30,10 @@
               <app-error-messages id="email-error"
                                   [control]="signinForm.get('email')"
                                   [errors]="{
-                                            'required': translateService.instant('general.required'),
-                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('email')}),
-                                            'email': translateService.instant('general.email')
-                                          }">
+                                           'required': translateService.instant('general.required'),
+                                           'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('email')}),
+                                           'email': translateService.instant('general.email')
+                                         }">
               </app-error-messages>
             </div>
             <div class="form-group m-form__group"
@@ -50,34 +52,29 @@
               </app-error-messages>
             </div>
             <div class="row m-login__form-sub">
-              <div class="col m--align-left">
-                <label class="m-checkbox m-checkbox--focus">
-                  <input type="checkbox" name="remember" formControlName="remember">
-                    {{'signin.remember_me'|translate}}
+              <div class="col m--align-left m-login__form-left">
+                <label class="m-checkbox  m-checkbox--focus">
+                  <input type="checkbox" name="remember">
+                  {{'signin.remember_me'|translate}}
                   <span></span>
                 </label>
               </div>
-              <div class="col m--align-right">
+              <div class="col m--align-right m-login__form-right">
                 <a href="javascript:;"
                    id="m_login_forget_password"
                    class="m-link">
-                  {{'signin.forget_password'|translate}} ?
+                   {{'signin.forget_password'|translate}} ?
                 </a>
               </div>
             </div>
             <div class="m-login__form-action">
-              <button [disabled]="loading"
-                      type="submit"
-                      [ngClass]="{'m-loader m-loader--right m-loader--light': loading}"
-                      id="m_login_signin_submit"
-                      class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-                {{'signin.login'|translate}}
+              <button id="m_login_signin_submit"
+                      class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary">
+                      {{'signin.login'|translate}}
               </button>
             </div>
           </form>
         </div>
-      </div>
-      <div class="m-stack__item m-stack__item--center">
         <div class="m-login__account">
           <span class="m-login__account-msg">
             {{'signin.has_account'|translate}} ?
