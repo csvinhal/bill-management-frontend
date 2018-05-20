@@ -1,7 +1,7 @@
 <div class="m-grid m-grid--hor m-grid--root m-page">
   <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2"
        id="m_login"
-       style="background-image: url(../../../assets/app/media/img//bg/bg-3.jpg);">
+       style="background-image: url(assets/img/bg/bg-3.jpg);">
     <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
       <div class="m-login__container">
         <div class="m-login__logo">
@@ -71,7 +71,7 @@
               </app-error-messages>
             </div>
             <div class="form-group m-form__group"
-                 [ngClass]="{ 'has-danger': isFieldInvalid('password')}">
+                 [ngClass]="{'has-danger': isFieldInvalid('password')}">
               <input class="form-control m-input"
                      type="password"
                      placeholder="{{'signup.password'|translate}}"
@@ -129,15 +129,12 @@
               </div>
             </div>
             <div class="m-login__form-action">
-              <button [disabled]="loading"
-                      [ngClass]="{ 'm-loader m-loader--right m-loader--light': loading}"
-                      id="m_login_signup_submit"
+              <button id="m_login_signup_submit"
                       type="submit"
                       class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
                             {{'signup.btn_sign'|translate}}
             </button>
-              <button [disabled]="loading"
-                      id="m_login_signup_cancel"
+              <button id="m_login_signup_cancel"
                       type="button"
                       class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom"
                       [routerLink]="[ '/signin']">

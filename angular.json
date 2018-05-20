@@ -32,7 +32,8 @@
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
                             "src/assets/vendors/base/vendors.bundle.js",
-                            "src/assets/vendors/custom/components/base/toastr.js"
+                            "src/assets/vendors/custom/components/base/toastr.js",
+                            "src/assets/vendors/custom/components/base/blockui.js"
                         ]
                     },
                     "configurations": {
