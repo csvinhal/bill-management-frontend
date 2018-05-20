@@ -6,12 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { SigninService } from './signin.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    SigninRouting,
-  ],
+  imports: [CommonModule, SharedModule, SigninRouting],
   declarations: [SigninComponent],
   providers: [SigninService]
 })
-export class SigninModule { }
+export class SigninModule {}

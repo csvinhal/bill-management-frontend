@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { SigninService } from './signin.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@core';
+import { TranslateService } from '@ngx-translate/core';
+
+import { SigninService } from './signin.service';
 
 @Component({
   selector: 'app-signin',
@@ -10,12 +12,14 @@ import { ToastrService } from '@core';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-
   signinForm: FormGroup;
 
-  constructor(private signinService: SigninService,
+  constructor(
+    private signinService: SigninService,
     private router: Router,
-    private toastrService: ToastrService) { }
+    private translateService: TranslateService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit() {
     this.createForm();
@@ -23,23 +27,54 @@ export class SigninComponent implements OnInit {
 
   createForm() {
     this.signinForm = new FormGroup({
-      'email': new FormControl(),
-      'password': new FormControl(),
-      'remember': new FormControl(),
+      email: new FormControl(
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.email
+        ])
+      ),
+      password: new FormControl(
+        null,
+        Validators.compose([Validators.required, Validators.minLength(4)])
+      ),
+      remember: new FormControl()
     });
   }
 
   signin() {
-    debugger;
-    return this.signinService.signin(this.signinForm.getRawValue()).subscribe(
-      success => {
-        this.toastrService.success('You successfully logged in!', 'Success');
+    if (this.signinForm.valid) {
+      return this.signinService.signin(this.signinForm.getRawValue()).subscribe(
+        success => {
+          this.toastrService.success('You successfully logged in!', 'Success');
+          this.router.navigate(['dashboard']);
+        },
+        exception =>
+          this.toastrService.error(
+            exception.error.message,
+            exception.error.title
+          )
+      );
+    }
 
-        this.router.navigate(['dashboard']);
-      },
-      exception => {
-        this.toastrService.error(exception.error.message, exception.error.title);
-      });
+    Object.keys(this.signinForm.controls).forEach((control: string) => {
+      this.signinForm.get(control).markAsTouched();
+      this.signinForm.get(control).updateValueAndValidity();
+    });
   }
 
+  isFieldInvalid(field: string) {
+    return (
+      this.signinForm.get(field).touched && !this.signinForm.get(field).valid
+    );
+  }
+
+  getMinimumLength(control: string) {
+    return (
+      this.signinForm.get(control).errors &&
+      this.signinForm.get(control).errors.minlength &&
+      this.signinForm.get(control).errors.minlength.requiredLength
+    );
+  }
 }

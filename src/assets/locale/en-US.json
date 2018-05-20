@@ -1,31 +1,40 @@
 {
-  "signup": {
-    "title": "Sign Up",
-    "create_account_detail": "Enter your details to create your account:",
-    "firstname": "Firstname",
-    "lastname": "LastName",
-    "email": "Email",
-    "password": "Password",
-    "confirm_password": "Confirm password",
-    "agreed": "I Agree the",
-    "terms_and_conditions": "terms and conditions",
-    "btn_sign": "Sign Up",
-    "btn_cancel": "Cancel"
-  },
-  "signin": {
-    "title": "Sign In",
-    "email": "Email",
-    "password": "Password",
-    "remember_me": "Remember me",
-    "forget_password": "Forget Password",
-    "login": "Sign In",
-    "signup": "Sign Up",
-    "has_account": "Don't have an account yet"
-  },
-  "dashboard": {
-    "dashboard": "teste"
-  },
-  "general": {
-    "required": "This field is required."
-  }
+    "signup": {
+        "title": "Sign Up",
+        "create_account_detail": "Enter your details to create your account:",
+        "firstname": "Firstname",
+        "lastname": "LastName",
+        "email": "Email",
+        "password": "Password",
+        "confirm_password": "Confirm password",
+        "agreed": "I Agree the",
+        "terms_and_conditions": "terms and conditions",
+        "btn_sign": "Sign Up",
+        "btn_cancel": "Cancel"
+    },
+    "signin": {
+        "title": "Sign In",
+        "email": "Email",
+        "password": "Password",
+        "remember_me": "Remember me",
+        "forget_password": "Forget Password",
+        "login": "Sign In",
+        "signup": "Sign Up",
+        "has_account": "Don't have an account yet"
+    },
+    "dashboard": {
+        "dashboard": "teste"
+    },
+    "terms_conditions": {
+        "title": "Terms and conditions",
+        "close": "Close",
+        "descrition": "This is a educational software. We don't recommend its use for real control of your bills accounts. We don't responsible for anything about its use. Use by your own responsibility."
+    },
+    "general": {
+        "required": "This field is required.",
+        "min_length": "The field must be greater then {{value}}.",
+        "email": "Please insert a valid e-mail.",
+        "not_agreed": "You must agree with the terms and conditions before continue.",
+        "password_not_match": "It must be equal to the password."
+    }
 }

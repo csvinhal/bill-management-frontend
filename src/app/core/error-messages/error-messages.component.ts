@@ -7,25 +7,22 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./error-messages.component.scss']
 })
 export class ErrorMessagesComponent implements OnInit {
-
   @Input() control: FormControl;
   @Input() errors: any;
   messages: string[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   get errorMessage() {
     this.messages = [];
     if (!this.control.valid && this.control.touched) {
-      Object.keys(this.control.errors).forEach(error => {
+      Object.keys(this.control.errors || {}).forEach(error => {
         this.messages.push(this.errors[error]);
       });
     }
 
     return this.messages;
   }
-
 }

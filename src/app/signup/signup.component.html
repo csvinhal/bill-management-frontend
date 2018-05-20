@@ -14,7 +14,7 @@
             {{'signup.create_account_detail'|translate}}
           </div>
         </div>
-        <form (ngSubmit)="signup.valid && signup()"
+        <form (ngSubmit)="signup()"
               [formGroup]="signupForm"
               class="m-login__form m-form"
               action="">
@@ -28,7 +28,10 @@
                    formControlName="firstname">
             <app-error-messages id="firstname-error"
                                 [control]="signupForm.get('firstname')"
-                                [errors]="{'required': translateService.instant('general.required')}">
+                                [errors]="{
+                                            'required': translateService.instant('general.required'),
+                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('firstname')})
+                                          }">
             </app-error-messages>
           </div>
           <div class="form-group m-form__group"
@@ -40,20 +43,27 @@
                    formControlName="lastname">
             <app-error-messages id="lastname-error"
                                 [control]="signupForm.get('lastname')"
-                                [errors]="{'required': translateService.instant('general.required')}">
+                                [errors]="{
+                                            'required': translateService.instant('general.required'),
+                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('lastname')})
+                                          }">
             </app-error-messages>
           </div>
           <div class="form-group m-form__group"
                [ngClass]="{'has-danger': isFieldInvalid('email')}">
             <input class=" form-control m-input"
-                   type="text"
+                   type="email"
                    placeholder="{{'signup.email'|translate}}"
                    name="email"
                    formControlName="email"
                    autocomplete="off">
             <app-error-messages id="email-error"
                                 [control]="signupForm.get('email')"
-                                [errors]="{'required': translateService.instant('general.required')}">
+                                [errors]="{
+                                            'required': translateService.instant('general.required'),
+                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('email')}),
+                                            'email': translateService.instant('general.email')
+                                          }">
             </app-error-messages>
           </div>
           <div class="form-group m-form__group"
@@ -65,34 +75,53 @@
                    formControlName="password">
             <app-error-messages id="password-error"
                                 [control]="signupForm.get('password')"
-                                [errors]="{'required': translateService.instant('general.required')}">
+                                [errors]="{
+                                            'required': translateService.instant('general.required'),
+                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('password')})
+                                          }">
             </app-error-messages>
           </div>
           <div class="form-group m-form__group"
                [ngClass]="{'has-danger': isFieldInvalid('rpassword')}">
-            <input class=" form-control m-input m-login__form-input--last"
+            <input class="form-control m-input m-login__form-input--last"
                    type="password"
                    placeholder="{{'signup.confirm_password'|translate}}"
                    name="rpassword"
                    formControlName="rpassword">
             <app-error-messages id="rpassword-error"
                                 [control]="signupForm.get('rpassword')"
-                                [errors]="{'required': translateService.instant('general.required')}">
+                                [errors]="{
+                                            'required': translateService.instant('general.required'),
+                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('rpassword')}),
+                                            'not_match': translateService.instant('general.password_not_match')
+                                          }">
             </app-error-messages>
           </div>
-          <div class="row form-group m-form__group m-login__form-sub">
-            <div class="col m--align-left">
-              <label class="m-checkbox m-checkbox--focus">
-                <input type="checkbox"
-                      name="agreed"
-                      formControlName="agreed"> {{'signup.agreed'|translate}}
-                <a href="#" class="m-link m-link--focus">
-                  {{'signup.terms_and_conditions'|translate}}
-                </a>
-                .
-                <span></span>
-              </label>
-              <span class="m-form__help"></span>
+          <div class="form-group m-form__group m-login__form-sub"
+               [ngClass]="{'has-danger': isFieldInvalid('agreed')}">
+            <div class="row">
+              <div class="col m--align-left">
+                <label class="m-checkbox m-checkbox--focus">
+                              <input type="checkbox"
+                                    name="agreed"
+                                    formControlName="agreed"> {{'signup.agreed'|translate}}
+                              <a class="m-link m-link--focus" data-toggle="modal" href="#m_modal_6">
+                                {{'signup.terms_and_conditions'|translate}}
+                              </a>
+                              .
+                              <span></span>
+                            </label>
+                <span class="m-form__help"></span>
+              </div>
+            </div>
+            <div class="row">
+              <app-error-messages id="agreed-error"
+                                  [ngStyle]="{'padding-left': '1.2em'}"
+                                  [control]="signupForm.get('agreed')"
+                                  [errors]="{
+                                            'not_agreed': translateService.instant('general.not_agreed')
+                                          }">
+              </app-error-messages>
             </div>
           </div>
           <div class="m-login__form-action">
@@ -100,16 +129,15 @@
                     [ngClass]="{ 'm-loader m-loader--right m-loader--light': loading}"
                     id="m_login_signup_submit"
                     type="submit"
-                    (click)="signup()"
                     class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-                {{'signup.btn_sign'|translate}}
+                            {{'signup.btn_sign'|translate}}
             </button>
             <button [disabled]="loading"
                     id="m_login_signup_cancel"
                     type="button"
                     class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom"
                     [routerLink]="[ '/signin']">
-              {{'signup.btn_cancel'|translate}}
+                          {{'signup.btn_cancel'|translate}}
             </button>
           </div>
         </form>
@@ -117,3 +145,5 @@
     </div>
   </div>
 </div>
+
+<app-terms-conditions></app-terms-conditions>
