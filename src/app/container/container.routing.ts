@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
-import { ContainerModule } from './container/container.module';
+import { ContainerComponent } from './container.component';
 
 const routes: Route[] = [
   {
-    path: 'container',
-    loadChildren: () => ContainerModule
+    path: '',
+    component: ContainerComponent
   }
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
   declarations: []
 })
-export class AppRouting { }
+export class ContainerRouting { }
