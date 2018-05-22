@@ -48,7 +48,7 @@ export class SigninComponent implements OnInit {
       return this.signinService.signin(this.signinForm.getRawValue()).subscribe(
         success => {
           this.toastrService.success('You successfully logged in!', 'Success');
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['container']);
         },
         exception =>
           this.toastrService.error(
