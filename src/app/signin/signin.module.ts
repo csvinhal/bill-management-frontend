@@ -8,6 +8,7 @@ import { SigninService } from './signin.service';
 @NgModule({
   imports: [CommonModule, SharedModule, SigninRouting],
   declarations: [SigninComponent],
-  providers: [SigninService]
+  exports: [SigninComponent],
+  providers: [SigninService],
 })
 export class SigninModule {}

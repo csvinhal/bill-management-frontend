@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SigninModule } from './signin/signin.module';
@@ -13,25 +11,15 @@ import { AppRouting } from './app.routing';
 import { CoreModule } from '@core';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRouting,
-    HttpClientModule,
-    CoreModule,
-    SharedModule,
-    SigninModule,
-    SignupModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRouting, HttpClientModule, CoreModule, SharedModule, SigninModule, SignupModule],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

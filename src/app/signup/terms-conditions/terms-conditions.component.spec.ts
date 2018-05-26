@@ -5,7 +5,6 @@ import { TranslateModule, TranslateFakeLoader } from '@ngx-translate/core';
 
 import { CoreModule } from '@core';
 import { TermsConditionsComponent } from './terms-conditions.component';
-import { SharedModule } from '../../shared/shared.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TermsConditionsComponent', () => {
@@ -19,13 +18,13 @@ describe('TermsConditionsComponent', () => {
         TranslateModule.forRoot({
           loader: {
             provide: TranslateHttpLoader,
-            useClass: TranslateFakeLoader
-          }
+            useClass: TranslateFakeLoader,
+          },
         }),
-        CoreModule
+        CoreModule,
       ],
       declarations: [TermsConditionsComponent],
-      providers: [HttpClient]
+      providers: [HttpClient],
     }).compileComponents();
   }));
 

@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from '@core';
-import { TranslateService } from '@ngx-translate/core';
 
 import { SigninService } from './signin.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
   signinForm: FormGroup;
@@ -17,7 +17,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private signinService: SigninService,
     private router: Router,
-    private translateService: TranslateService,
+    private _translateService: TranslateService,
     private toastrService: ToastrService
   ) {}
 
@@ -27,19 +27,9 @@ export class SigninComponent implements OnInit {
 
   createForm() {
     this.signinForm = new FormGroup({
-      email: new FormControl(
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
-          Validators.email
-        ])
-      ),
-      password: new FormControl(
-        null,
-        Validators.compose([Validators.required, Validators.minLength(4)])
-      ),
-      remember: new FormControl()
+      email: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4), Validators.email])),
+      password: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4)])),
+      remember: new FormControl(),
     });
   }
 
@@ -50,11 +40,7 @@ export class SigninComponent implements OnInit {
           this.toastrService.success('You successfully logged in!', 'Success');
           this.router.navigate(['container']);
         },
-        exception =>
-          this.toastrService.error(
-            exception.error.message,
-            exception.error.title
-          )
+        exception => this.toastrService.error(exception.error.message, exception.error.title)
       );
     }
 
@@ -65,9 +51,7 @@ export class SigninComponent implements OnInit {
   }
 
   isFieldInvalid(field: string) {
-    return (
-      this.signinForm.get(field).touched && !this.signinForm.get(field).valid
-    );
+    return this.signinForm.get(field).touched && !this.signinForm.get(field).valid;
   }
 
   getMinimumLength(control: string) {
@@ -76,5 +60,9 @@ export class SigninComponent implements OnInit {
       this.signinForm.get(control).errors.minlength &&
       this.signinForm.get(control).errors.minlength.requiredLength
     );
+  }
+
+  get translateService() {
+    return this._translateService;
   }
 }

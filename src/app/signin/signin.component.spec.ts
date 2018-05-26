@@ -1,37 +1,34 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { SigninComponent } from './signin.component';
 import { SharedModule } from '../shared/shared.module';
 import { SigninService } from './signin.service';
 import { CoreModule } from '../core/core.module';
-
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/locale/', '.json');
-}
+import { SignupComponent } from '../signup/signup.component';
+import { SignupModule } from '../signup/signup.module';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 describe('SigninComponent', () => {
   let component: SigninComponent;
   let fixture: ComponentFixture<SigninComponent>;
+  let router: Router;
+  let location: Location;
+  let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule,
-        TranslateModule.forRoot({
-          loader: {
-            provide: TranslateLoader,
-            useFactory: createTranslateLoader,
-            deps: [HttpClient],
-          },
-        }),
+        RouterTestingModule.withRoutes([{ path: 'signin', component: SigninComponent }, { path: 'signup', component: SignupComponent }]),
+        TranslateModule.forRoot(),
         SharedModule,
         CoreModule,
+        SignupModule,
       ],
       declarations: [SigninComponent],
       providers: [SigninService, HttpClient],
@@ -41,6 +38,7 @@ describe('SigninComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SigninComponent);
     component = fixture.componentInstance;
+    element = fixture.debugElement.nativeElement;
     fixture.detectChanges();
   });
 
@@ -64,8 +62,8 @@ describe('SigninComponent', () => {
     fixture.detectChanges();
     expect(component.signinForm.valid).toBeFalsy();
 
-    expect(fixture.debugElement.nativeElement.querySelectorAll('#email-error').length).toBe(1);
-    expect(fixture.debugElement.nativeElement.querySelectorAll('#password-error').length).toBe(1);
+    expect(element.querySelector('#email-error')).toBeTruthy();
+    expect(element.querySelector('#password-error')).toBeTruthy();
   });
 
   it('should have an email error', () => {
@@ -77,6 +75,32 @@ describe('SigninComponent', () => {
     fixture.detectChanges();
     expect(component.signinForm.valid).toBeFalsy();
 
-    expect(fixture.debugElement.nativeElement.querySelectorAll('#email-error').length).toBe(1);
+    expect(element.querySelector('#email-error')).toBeTruthy();
   });
+
+  it(
+    'should go to signin',
+    fakeAsync(() => {
+      router = TestBed.get(Router);
+      location = TestBed.get(Location);
+
+      router.initialNavigation();
+      fixture.detectChanges();
+
+      router.navigate(['/signin']).then(() => {
+        expect(location.path()).toBe('/signin');
+        const anchorElement = element.querySelector('#m_login_signup');
+        expect(anchorElement).toBeTruthy();
+        expect(anchorElement.getAttribute('href')).toBe('/signup');
+
+        anchorElement.dispatchEvent(new MouseEvent('click'));
+        tick();
+        fixture.detectChanges();
+
+        fixture.whenStable().then(() => {
+          expect(location.path()).toBe('/signup');
+        });
+      });
+    })
+  );
 });

@@ -1,20 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  AbstractControl
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 
 import { ToastrService } from '@core';
 import { SignupService } from './signup.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
@@ -22,7 +17,7 @@ export class SignupComponent implements OnInit {
   constructor(
     private signupService: SignupService,
     private router: Router,
-    private translateService: TranslateService,
+    private _translateService: TranslateService,
     private toastrService: ToastrService
   ) {}
 
@@ -32,35 +27,12 @@ export class SignupComponent implements OnInit {
 
   createForm() {
     this.signupForm = new FormGroup({
-      firstname: new FormControl(
-        null,
-        Validators.compose([Validators.required, Validators.minLength(4)])
-      ),
-      lastname: new FormControl(
-        null,
-        Validators.compose([Validators.required, Validators.minLength(4)])
-      ),
-      email: new FormControl(
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
-          Validators.email
-        ])
-      ),
-      password: new FormControl(
-        null,
-        Validators.compose([Validators.required, Validators.minLength(4)])
-      ),
-      rpassword: new FormControl(
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(4),
-          this.isPasswordEqual.call(this)
-        ])
-      ),
-      agreed: new FormControl(null, this.isAgreed)
+      firstname: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4)])),
+      lastname: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4)])),
+      email: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4), Validators.email])),
+      password: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4)])),
+      rpassword: new FormControl(null, Validators.compose([Validators.required, Validators.minLength(4), this.isPasswordEqual.call(this)])),
+      agreed: new FormControl(null, this.isAgreed),
     });
   }
 
@@ -70,11 +42,7 @@ export class SignupComponent implements OnInit {
         .signup(this.signupForm.getRawValue())
         .subscribe(
           success => this.router.navigate(['signin']),
-          exception =>
-            this.toastrService.error(
-              exception.error.message,
-              exception.error.title
-            )
+          exception => this.toastrService.error(exception.error.message, exception.error.title)
         );
     }
 
@@ -85,9 +53,7 @@ export class SignupComponent implements OnInit {
   }
 
   isFieldInvalid(field: string) {
-    return (
-      this.signupForm.get(field).touched && !this.signupForm.get(field).valid
-    );
+    return this.signupForm.get(field).touched && !this.signupForm.get(field).valid;
   }
 
   getMinimumLength(control: string) {
@@ -113,10 +79,10 @@ export class SignupComponent implements OnInit {
   }
 
   get password() {
-    return (
-      this.signupForm &&
-      this.signupForm.get('password') &&
-      this.signupForm.get('password').value
-    );
+    return this.signupForm && this.signupForm.get('password') && this.signupForm.get('password').value;
+  }
+
+  get translateService() {
+    return this._translateService;
   }
 }
