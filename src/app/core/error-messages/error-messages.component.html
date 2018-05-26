@@ -1,5 +1,3 @@
-<div id="error-{{i}}"
-     *ngFor="let message of errorMessage; let i = index"
-     class="form-control-feedback">
+<div id="error-{{i}}" class="form-control-feedback" *ngFor="let message of errorMessage; let i = index">
   {{message}}
 </div>

@@ -20,6 +20,13 @@ describe('SigninComponent', () => {
   let location: Location;
   let element: HTMLElement;
 
+  const updateForm = () => {
+    Object.keys(component.signinForm.controls).forEach((control: string) => {
+      component.signinForm.get(control).markAsTouched();
+      component.signinForm.get(control).updateValueAndValidity();
+    });
+  };
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -53,11 +60,13 @@ describe('SigninComponent', () => {
     component.signinForm.updateValueAndValidity();
 
     fixture.detectChanges();
+    expect(component.signinForm).toBeTruthy();
     expect(component.signinForm.valid).toBeTruthy();
   });
 
   it('should have controls required errors', () => {
     component.signinForm.updateValueAndValidity();
+    updateForm();
 
     fixture.detectChanges();
     expect(component.signinForm.valid).toBeFalsy();
@@ -71,6 +80,7 @@ describe('SigninComponent', () => {
     component.signinForm.get('password').setValue('12345678');
 
     component.signinForm.updateValueAndValidity();
+    updateForm();
 
     fixture.detectChanges();
     expect(component.signinForm.valid).toBeFalsy();
@@ -89,11 +99,7 @@ describe('SigninComponent', () => {
 
       router.navigate(['/signin']).then(() => {
         expect(location.path()).toBe('/signin');
-        const anchorElement = element.querySelector('#m_login_signup');
-        expect(anchorElement).toBeTruthy();
-        expect(anchorElement.getAttribute('href')).toBe('/signup');
-
-        anchorElement.dispatchEvent(new MouseEvent('click'));
+        element.querySelector('#btn-signup').dispatchEvent(new MouseEvent('click'));
         tick();
         fixture.detectChanges();
 

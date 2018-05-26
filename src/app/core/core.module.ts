@@ -5,10 +5,11 @@ import { ToastrModule } from './toastr/toastr.module';
 import { TranslateHubModule } from './translate/translate-hub.module';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { BlockUiModule } from './block-ui/block-ui.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [TranslateHubModule, BlockUiModule, ToastrModule],
+  exports: [BrowserAnimationsModule, TranslateHubModule, BlockUiModule, ToastrModule],
 })
 export class CoreModule {
   constructor(

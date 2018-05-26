@@ -1,0 +1,27 @@
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.signin-content {
+  padding: 60px 1rem;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+button + button.mat-icon-button {
+  padding-left: 1.5em;
+}
+
+.full-width-checkbox {
+  width: 100%;
+  text-align: left;
+  padding-left: 4em;
+}
+
+.terms {
+  padding-left: 0.3em;
+}
