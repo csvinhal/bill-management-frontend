@@ -64,6 +64,12 @@
           {{'signup.agreed'|translate}}
         </mat-checkbox>
         <button id="btn-signup" mat-icon-button class="terms" (click)="signup()" color="primary">{{'signup.terms_and_conditions'|translate}}.</button>
+        <mat-error>
+          <app-error-messages id="agreed-error" [ngStyle]="{'padding-left': '1.2em'}" [control]="signupForm.get('agreed')" [errors]="{
+                                            'not_agreed': translateService.instant('general.not_agreed')
+                                          }">
+          </app-error-messages>
+        </mat-error>
       </div>
     </form>
   </mat-card-content>

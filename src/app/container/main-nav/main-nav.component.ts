@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BreakpointState, BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-main-nav',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./main-nav.component.css'],
 })
 export class MainNavComponent {
-  constructor() {}
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }
