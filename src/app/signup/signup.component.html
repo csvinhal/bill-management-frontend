@@ -1,153 +1,74 @@
-<div class="m-grid m-grid--hor m-grid--root m-page">
-  <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-2"
-       id="m_login"
-       style="background-image: url(assets/img/bg/bg-3.jpg);">
-    <div class="m-grid__item m-grid__item--fluid	m-login__wrapper">
-      <div class="m-login__container">
-        <div class="m-login__logo">
-          <a href="#">
-            <img src="assets/icons/favicon-96x96.png">
-          </a>
-        </div>
-        <div class="m-login__signin">
-          <div class="m-login__head">
-            <h3 class="m-login__title">
-              {{'signup.title'|translate}}
-            </h3>
-            <div class="m-login__desc">
-              {{'signup.create_account_detail'|translate}}
-            </div>
-          </div>
-          <form (ngSubmit)="signup()"
-                [formGroup]="signupForm"
-                class="m-login__form m-form"
-                action="">
-            <ng-template #alertSignup></ng-template>
-            <div class="form-group m-form__group"
-                 [ngClass]="{'has-danger': isFieldInvalid('firstname')}">
-              <input class="form-control m-input"
-                     type="text"
-                     placeholder="{{'signup.firstname'|translate}}"
-                     name="firstname"
-                     formControlName="firstname">
-              <app-error-messages id="firstname-error"
-                                  [control]="signupForm.get('firstname')"
-                                  [errors]="{
-                                            'required': translateService.instant('general.required'),
-                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('firstname')})
-                                          }">
-              </app-error-messages>
-            </div>
-            <div class="form-group m-form__group"
-                 [ngClass]="{'has-danger': isFieldInvalid('lastname')}">
-              <input class="form-control m-input"
-                     type="text"
-                     placeholder="{{'signup.lastname'|translate}}"
-                     name="lastname"
-                     formControlName="lastname">
-              <app-error-messages id="lastname-error"
-                                  [control]="signupForm.get('lastname')"
-                                  [errors]="{
-                                            'required': translateService.instant('general.required'),
-                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('lastname')})
-                                          }">
-              </app-error-messages>
-            </div>
-            <div class="form-group m-form__group"
-                 [ngClass]="{'has-danger': isFieldInvalid('email')}">
-              <input class=" form-control m-input"
-                     type="email"
-                     placeholder="{{'signup.email'|translate}}"
-                     name="email"
-                     formControlName="email"
-                     autocomplete="off">
-              <app-error-messages id="email-error"
-                                  [control]="signupForm.get('email')"
-                                  [errors]="{
-                                            'required': translateService.instant('general.required'),
-                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('email')}),
-                                            'email': translateService.instant('general.email')
-                                          }">
-              </app-error-messages>
-            </div>
-            <div class="form-group m-form__group"
-                 [ngClass]="{'has-danger': isFieldInvalid('password')}">
-              <input class="form-control m-input"
-                     type="password"
-                     placeholder="{{'signup.password'|translate}}"
-                     name="password"
-                     formControlName="password">
-              <app-error-messages id="password-error"
-                                  [control]="signupForm.get('password')"
-                                  [errors]="{
-                                            'required': translateService.instant('general.required'),
-                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('password')})
-                                          }">
-              </app-error-messages>
-            </div>
-            <div class="form-group m-form__group"
-                 [ngClass]="{'has-danger': isFieldInvalid('rpassword')}">
-              <input class="form-control m-input m-login__form-input--last"
-                     type="password"
-                     placeholder="{{'signup.confirm_password'|translate}}"
-                     name="rpassword"
-                     formControlName="rpassword">
-              <app-error-messages id="rpassword-error"
-                                  [control]="signupForm.get('rpassword')"
-                                  [errors]="{
-                                            'required': translateService.instant('general.required'),
-                                            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('rpassword')}),
-                                            'not_match': translateService.instant('general.password_not_match')
-                                          }">
-              </app-error-messages>
-            </div>
-            <div class="form-group m-form__group m-login__form-sub"
-                 [ngClass]="{'has-danger': isFieldInvalid('agreed')}">
-              <div class="row">
-                <div class="col m--align-left">
-                  <label class="m-checkbox m-checkbox--focus">
-                              <input type="checkbox"
-                                    name="agreed"
-                                    formControlName="agreed"> {{'signup.agreed'|translate}}
-                              <a class="m-link m-link--focus" data-toggle="modal" href="#m_modal_6">
-                                {{'signup.terms_and_conditions'|translate}}
-                              </a>
-                              .
-                              <span></span>
-                            </label>
-                  <span class="m-form__help"></span>
-                </div>
-              </div>
-              <div class="row">
-                <app-error-messages id="agreed-error"
-                                    [ngStyle]="{'padding-left': '1.2em'}"
-                                    [control]="signupForm.get('agreed')"
-                                    [errors]="{
-                                            'not_agreed': translateService.instant('general.not_agreed')
-                                          }">
-                </app-error-messages>
-              </div>
-            </div>
-            <div class="m-login__form-action">
-              <button id="m_login_signup_submit"
-                      type="submit"
-                      class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-                            {{'signup.btn_sign'|translate}}
-            </button>
-              <button id="m_login_signup_cancel"
-                      type="button"
-                      class="btn btn-outline-focus m-btn m-btn--pill m-btn--custom"
-                      [routerLink]="[ '/signin']">
-                          {{'signup.btn_cancel'|translate}}
-            </button>
-            </div>
-          </form>
-        </div>
+<mat-card class="example-card">
+  <mat-card-title>{{'signup.title'|translate}}</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="signupForm">
+      <mat-form-field class="full-width-input">
+        <input id="f-firstname" matInput type="text" placeholder="{{'signup.firstname'|translate}}" name="firstname" formControlName="firstname"
+          autocomplete="off">
+        <mat-error>
+          <app-error-messages id="firstname-error" [control]="signupForm.get('firstname')" [errors]="{
+            'required': translateService.instant('general.required'),
+            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('firstname')})
+          }">
+          </app-error-messages>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input id="f-lastname" matInput type="text" placeholder="{{'signup.lastname'|translate}}" name="lastname" formControlName="lastname"
+          autocomplete="off">
+        <mat-error>
+          <app-error-messages id="lastname-error" [control]="signupForm.get('lastname')" [errors]="{
+            'required': translateService.instant('general.required'),
+            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('lastname')})
+          }">
+          </app-error-messages>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input id="f-email" matInput type="email" placeholder="{{'signup.email'|translate}}" name="email" formControlName="email"
+          autocomplete="off">
+        <mat-error>
+          <app-error-messages id="email-error" [control]="signupForm.get('email')" [errors]="{
+            'required': translateService.instant('general.required'),
+            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('email')}),
+            'email': translateService.instant('general.email')
+          }">
+          </app-error-messages>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input id="f-password" matInput type="password" placeholder="{{'signup.password'|translate}}" name="password" formControlName="password"
+          autocomplete="off">
+        <mat-error>
+          <app-error-messages id="password-error" [control]="signupForm.get('password')" [errors]="{
+            'required': translateService.instant('general.required'),
+            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('password')})
+          }">
+          </app-error-messages>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input id="f-rpassword" matInput type="password" placeholder="{{'signup.confirm_password'|translate}}" name="rpassword" formControlName="rpassword"
+          autocomplete="off">
+        <mat-error>
+          <app-error-messages id="rpassword-error" [control]="signupForm.get('rpassword')" [errors]="{
+            'required': translateService.instant('general.required'),
+            'minlength': translateService.instant('general.min_length', {'value':  getMinimumLength('rpassword')}),
+            'not_match': translateService.instant('general.password_not_match')
+          }">
+          </app-error-messages>
+        </mat-error>
+      </mat-form-field>
+      <div class="full-width-checkbox">
+        <mat-checkbox id="f-agreed" name="agreed" formControlName="agreed">
+          {{'signup.agreed'|translate}}
+        </mat-checkbox>
+        <button id="btn-signup" mat-icon-button class="terms" (click)="signup()" color="primary">{{'signup.terms_and_conditions'|translate}}.</button>
       </div>
-    </div>
-  </div>
-</div>
-
-
-
-<app-terms-conditions></app-terms-conditions>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button id="btn-signup" mat-raised-button (click)="signup()" color="primary">{{'signup.btn_sign'|translate}}</button>
+    <button id="btn-signup" mat-icon-button routerLink="/signin">{{'signup.btn_cancel'|translate}}</button>
+  </mat-card-actions>
+</mat-card>

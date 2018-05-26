@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ErrorMessagesModule } from '../core/error-messages/error-messages.module';
+import { ErrorMessagesModule } from '@core';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [
     ReactiveFormsModule,
     ErrorMessagesModule,
-    TranslateModule
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatToolbarModule,
+    TranslateModule,
   ],
-  declarations: []
+  declarations: [],
 })
-export class SharedModule { }
+export class SharedModule {}

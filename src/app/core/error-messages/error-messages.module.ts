@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material';
+
 import { ErrorMessagesComponent } from './error-messages.component';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule, MatFormFieldModule],
   declarations: [ErrorMessagesComponent],
-  exports: [ErrorMessagesComponent]
+  exports: [ErrorMessagesComponent],
 })
-export class ErrorMessagesModule { }
+export class ErrorMessagesModule {}
