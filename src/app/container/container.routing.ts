@@ -6,13 +6,19 @@ import { ContainerComponent } from './container.component';
 const routes: Route[] = [
   {
     path: '',
-    component: ContainerComponent
-  }
+    component: ContainerComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: './dashboard/dashboard.module#DashboardModule',
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
-  declarations: []
+  declarations: [],
 })
-export class ContainerRouting { }
+export class ContainerRouting {}

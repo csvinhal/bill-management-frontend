@@ -4,6 +4,8 @@ import { MainNavComponent } from './main-nav.component';
 import { SharedModule } from '../../shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatExpansionModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainNavComponent', () => {
   let component: MainNavComponent;
@@ -12,7 +14,15 @@ describe('MainNavComponent', () => {
   beforeEach(
     fakeAsync(() => {
       TestBed.configureTestingModule({
-        imports: [BrowserAnimationsModule, SharedModule, TranslateModule.forRoot()],
+        imports: [
+          BrowserAnimationsModule,
+          SharedModule,
+          RouterTestingModule,
+          TranslateModule.forRoot(),
+          MatExpansionModule,
+          MatSidenavModule,
+          MatToolbarModule,
+        ],
         declarations: [MainNavComponent],
       }).compileComponents();
 
