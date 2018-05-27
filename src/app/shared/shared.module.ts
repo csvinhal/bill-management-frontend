@@ -12,8 +12,6 @@ import {
   MatListModule,
   MatIconModule,
   MatInputModule,
-  MatSidenavModule,
-  MatToolbarModule,
 } from '@angular/material';
 
 @NgModule({
@@ -29,8 +27,6 @@ import {
     MatListModule,
     MatIconModule,
     MatInputModule,
-    MatSidenavModule,
-    MatToolbarModule,
     TranslateModule,
   ],
   declarations: [],

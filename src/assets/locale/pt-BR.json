@@ -23,7 +23,13 @@
     "has_account": "Ainda não tem conta"
   },
   "content": {
-    "title": "Bills Management"
+    "title": "Bills Management",
+    "nav_item": {
+      "dashboard": "Painel de controle",
+      "manager": "Gerenciar",
+      "accounts": "Carteiras",
+      "credit_card": "Cartões de crédito"
+    }
   },
   "terms_conditions": {
     "title": "Termos e condições",
