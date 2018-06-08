@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainNavComponent } from './main-nav.component';
-import { SharedModule } from '../../shared/shared.module';
+import { NgModule } from '@angular/core';
+import { MatExpansionModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
-import { MatSidenavModule, MatToolbarModule, MatExpansionModule } from '@angular/material';
+import { SharedModule } from '@shared';
+
+import { MainNavComponent } from './main-nav.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, SharedModule, MatExpansionModule, MatSidenavModule, MatToolbarModule],

@@ -12,8 +12,15 @@ describe('ContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        BrowserAnimationsModule,
+        RouterTestingModule,
+        // Translate
+        TranslateModule.forRoot(),
+        // Angular material
+        MainNavModule,
+      ],
       declarations: [ContainerComponent],
-      imports: [BrowserAnimationsModule, MainNavModule, RouterTestingModule, TranslateModule.forRoot()],
     }).compileComponents();
   }));
 

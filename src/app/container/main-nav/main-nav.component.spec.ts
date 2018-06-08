@@ -1,11 +1,10 @@
-import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
+import { MatExpansionModule, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { MainNavComponent } from './main-nav.component';
-import { SharedModule } from '../../shared/shared.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule } from '@ngx-translate/core';
-import { MatExpansionModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainNavComponent', () => {
   let component: MainNavComponent;
@@ -16,10 +15,13 @@ describe('MainNavComponent', () => {
       TestBed.configureTestingModule({
         imports: [
           BrowserAnimationsModule,
-          SharedModule,
           RouterTestingModule,
+          // Translate
           TranslateModule.forRoot(),
+          // Angular material
           MatExpansionModule,
+          MatIconModule,
+          MatListModule,
           MatSidenavModule,
           MatToolbarModule,
         ],
