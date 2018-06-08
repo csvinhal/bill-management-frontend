@@ -7,51 +7,12 @@
   box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
 }
 
-// Remove border of mat-expansion
-.mat-expansion-panel:not([class*='mat-elevation-z']) {
-  box-shadow: none;
-}
-
-// Remove padding mat-list
-.mat-list,
-.mat-nav-list,
-.mat-selection-list {
-  padding-top: 0px;
-}
-
-.mat-expansion-panel-header {
-  font-size: 14px;
-  padding-left: 16px;
-  height: 48px !important;
-}
-
-.mat-expansion-panel-spacing {
-  margin: 0;
-}
-
-// Anchor links inside mat-expansion-panel
-a.item-list {
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.87);
-  text-decoration: none;
-}
-
-// Anchor links inside mat-expansion-panel
 .item-list {
   display: flex;
   flex-direction: row;
   align-items: center;
   box-sizing: border-box;
   padding: 0 16px;
+  font-size: 14px;
   position: relative;
-  height: 40px;
-}
-
-// Font mat-list in sidebar
-.mat-list .mat-list-item,
-.mat-nav-list .mat-list-item,
-.mat-selection-list .mat-list-item {
-  font-size: 14px !important;
 }

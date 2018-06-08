@@ -1,17 +1,19 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { SigninComponent } from './signin.component';
-import { SharedModule } from '../shared/shared.module';
-import { SigninService } from './signin.service';
-import { CoreModule } from '../core/core.module';
 import { SignupComponent } from '../signup/signup.component';
 import { SignupModule } from '../signup/signup.module';
-import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { SigninComponent } from './signin.component';
+import { SigninService } from './signin.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { ErrorMessagesModule, ToastrModule } from '@core';
 
 describe('SigninComponent', () => {
   let component: SigninComponent;
@@ -30,12 +32,20 @@ describe('SigninComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         HttpClientTestingModule,
+        ReactiveFormsModule,
         RouterTestingModule.withRoutes([{ path: 'signin', component: SigninComponent }, { path: 'signup', component: SignupComponent }]),
-        TranslateModule.forRoot(),
-        SharedModule,
-        CoreModule,
         SignupModule,
+        // Components
+        ErrorMessagesModule,
+        ToastrModule,
+        // Translate
+        TranslateModule.forRoot(),
+        // Angular material
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
       ],
       declarations: [SigninComponent],
       providers: [SigninService, HttpClient],

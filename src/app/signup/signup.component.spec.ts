@@ -1,14 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule, MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ErrorMessagesModule, ToastrModule } from '@core';
 import { TranslateModule } from '@ngx-translate/core';
-import { CoreModule } from '@core';
 
 import { SignupComponent } from './signup.component';
-import { SharedModule } from '../shared/shared.module';
 import { SignupService } from './signup.service';
 import { TermsConditionsModule } from './terms-conditions/terms-conditions.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SignupComponent', () => {
   let component: SignupComponent;
@@ -24,9 +25,25 @@ describe('SignupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, TranslateModule.forRoot(), SharedModule, CoreModule, TermsConditionsModule],
+      imports: [
+        BrowserAnimationsModule,
+        HttpClientTestingModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
+        TermsConditionsModule,
+        // Components
+        ErrorMessagesModule,
+        ToastrModule,
+        // Translate
+        TranslateModule.forRoot(),
+        // Angular material
+        MatCardModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+      ],
       declarations: [SignupComponent],
-      providers: [SignupService, HttpClient],
+      providers: [SignupService],
     }).compileComponents();
   });
 
