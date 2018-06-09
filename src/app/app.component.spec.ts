@@ -1,13 +1,10 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-
+import { async, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { CoreModule } from '@core';
+import { SigninComponent, SigninModule, SignupComponent, SignupModule } from '@features';
+
 import { AppComponent } from './app.component';
-import { SigninComponent } from './signin/signin.component';
-import { SigninModule } from './signin/signin.module';
-import { SignupComponent } from './signup/signup.component';
-import { SignupModule } from './signup/signup.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

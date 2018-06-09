@@ -15,6 +15,7 @@
     "paths": {
       "@components": ["src/app/components/index.ts"],
       "@core": ["src/app/core/index.ts"],
+      "@features": ["src/app/features/index.ts"],
       "@shared": ["src/app/shared/index.ts"]
     },
     "plugins": [

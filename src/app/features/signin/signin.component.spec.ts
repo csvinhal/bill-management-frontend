@@ -2,18 +2,17 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
-
-import { SignupComponent } from '../signup/signup.component';
-import { SignupModule } from '../signup/signup.module';
-import { SigninComponent } from './signin.component';
-import { SigninService } from './signin.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ErrorMessagesModule, ToastrModule } from '@core';
+import { SignupComponent, SignupModule } from '@features';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { SigninComponent } from './signin.component';
+import { SigninService } from './signin.service';
 
 describe('SigninComponent', () => {
   let component: SigninComponent;

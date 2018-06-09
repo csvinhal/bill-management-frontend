@@ -5,7 +5,7 @@ import { RouterModule, Route } from '@angular/router';
 const routes: Route[] = [
   {
     path: 'container',
-    loadChildren: './container/container.module#ContainerModule',
+    loadChildren: './features/container/container.module#ContainerModule',
   },
 ];
 
